@@ -18,7 +18,7 @@ class Probability {
         }
     }
 
-    Probability calculateImprobability() throws InvalidProbabilityException {
+    Probability not() throws InvalidProbabilityException {
         Double probability = UPPER_BOUND - this.probability;
         return new Probability(probability);
     }
@@ -31,8 +31,14 @@ class Probability {
         return Objects.equals(probability, that.probability);
     }
 
-    Probability calculateCombinedProbability(Probability otherProbability) throws InvalidProbabilityException {
+    Probability and(Probability otherProbability) throws InvalidProbabilityException {
         Double combinedProbability = this.probability * otherProbability.probability;
         return new Probability(combinedProbability);
+    }
+
+
+    Probability or(Probability probability2) throws InvalidProbabilityException {
+        Double value = UPPER_BOUND - this.and(probability2).probability;
+        return new Probability(value);
     }
 }

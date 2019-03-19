@@ -26,7 +26,7 @@ class ProbabilityTest {
     void shouldGiveImprobabilityOfGivenProbability() throws InvalidProbabilityException {
         Probability probability = new Probability(0.5D);
         Probability expected = new Probability(0.5D);
-        assertEquals(expected, probability.calculateImprobability());
+        assertEquals(expected, probability.not());
     }
 
     @Test
@@ -34,6 +34,14 @@ class ProbabilityTest {
         Probability probability1 = new Probability(0.6D);
         Probability probability2 = new Probability(0.4D);
         Probability expected = new Probability(0.24D);
-        assertEquals(expected, probability1.calculateCombinedProbability(probability2));
+        assertEquals(expected, probability1.and(probability2));
+    }
+
+    @Test
+    void shouldGiveProbabilityOfGettingAtLeastOneTailOnFlippingTwoCoins() throws InvalidProbabilityException {
+        Probability probability1 = new Probability(0.6D);
+        Probability probability2 = new Probability(0.4D);
+        Probability expected = new Probability(0.76D);
+        assertEquals(expected, probability1.or(probability2));
     }
 }
