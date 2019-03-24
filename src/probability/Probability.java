@@ -37,8 +37,10 @@ class Probability {
     }
 
 
-    Probability or(Probability probability2) throws InvalidProbabilityException {
-        Double value = UPPER_BOUND - this.and(probability2).probability;
-        return new Probability(value);
+    Probability or(Probability otherProbability) throws InvalidProbabilityException {
+        Probability not = otherProbability.not();
+        Probability not1 = this.not();
+        Probability noOccurrence = not1.and(not);
+        return noOccurrence.not();
     }
 }
