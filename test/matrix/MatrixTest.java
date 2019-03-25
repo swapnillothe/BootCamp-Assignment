@@ -81,7 +81,7 @@ class MatrixTest {
 
         Matrix matrix1 = new Matrix(new ArrayList<>(asList(row1, row2, row3)));
 
-        assertEquals(-306, matrix1.determinantThreeByThree(matrix1));
+        assertEquals(-306, matrix1.determinant(matrix1));
 
     }
 
