@@ -8,7 +8,8 @@ class ParkingLotTest {
 
   @Test
   void shouldParkCarIntoTheParkingLot() throws ParkingLotFullException {
-    ParkingLot parkingLot = new ParkingLot(20);
+    ParkingLotObserver attendent = new Attendent();
+    ParkingLot parkingLot = new ParkingLot(20, attendent);
     Car car = new Car();
 
     int expectedPlace = 1;
@@ -17,7 +18,8 @@ class ParkingLotTest {
 
   @Test
   void shouldThrowExceptionWhenParkingLotIsFullAndTryingToParkCarIntoTheParkingLot() throws ParkingLotFullException {
-    ParkingLot parkingLot = new ParkingLot(1);
+    ParkingLotObserver attendent = new Attendent();
+    ParkingLot parkingLot = new ParkingLot(1, attendent);
     Car car1 = new Car();
     Car car2 = new Car();
     parkingLot.park(car1);

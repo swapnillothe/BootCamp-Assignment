@@ -5,10 +5,13 @@ import java.util.List;
 
 class ParkingLot {
   private int size;
+  private ParkingLotObserver attendent;
   private List<Car> parkedCars;
 
-  ParkingLot(int size) {
+  ParkingLot(int size, ParkingLotObserver attendent) {
     this.size = size;
+    this.attendent = attendent;
+    attendent.addParkingLot(this);
     parkedCars = new ArrayList<>();
   }
 
@@ -17,6 +20,9 @@ class ParkingLot {
       throw new ParkingLotFullException();
     }
     parkedCars.add(car);
+    if(parkedCars.size() == size){
+      this.attendent.notifyObserver(this);
+    }
     return parkedCars.size();
   }
 }
