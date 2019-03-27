@@ -8,8 +8,8 @@ class ParkingLotTest {
 
   @Test
   void shouldParkCarIntoTheParkingLot() throws ParkingLotFullException {
-    ParkingLotObserver attendent = new Attendent();
-    ParkingLot parkingLot = new ParkingLot(20, attendent);
+    ParkingLotObserver attendant = new Attendant();
+    ParkingLot parkingLot = new ParkingLot(20, attendant);
     Car car = new Car();
 
     assertDoesNotThrow(() -> parkingLot.park(car));
@@ -17,8 +17,8 @@ class ParkingLotTest {
 
   @Test
   void shouldThrowExceptionWhenParkingLotIsFullAndTryingToParkCarIntoTheParkingLot() throws ParkingLotFullException {
-    ParkingLotObserver attendent = new Attendent();
-    ParkingLot parkingLot = new ParkingLot(1, attendent);
+    ParkingLotObserver attendant = new Attendant();
+    ParkingLot parkingLot = new ParkingLot(1, attendant);
     Car car1 = new Car();
     Car car2 = new Car();
     parkingLot.park(car1);
@@ -28,18 +28,18 @@ class ParkingLotTest {
 
   @Test
   void shouldNotifyTheAttendedAfterParkingLotHasFull() throws ParkingLotFullException {
-    TestAttend attendent = new TestAttend();
-    ParkingLot parkingLot = new ParkingLot(1, attendent);
+    TestAttendant attendant = new TestAttendant();
+    ParkingLot parkingLot = new ParkingLot(1, attendant);
     Car car1 = new Car();
     parkingLot.park(car1);
 
-    assertTrue(attendent.isNotifiedForParkingLotFull);
+    assertTrue(attendant.isNotifiedForParkingLotFull);
   }
 
 
   @Test
   void shouldNotifyTheAttendedWhenTheParkingLotGetFreeAfterGettingFull() throws ParkingLotFullException {
-    TestAttend attendent = new TestAttend();
+    TestAttendant attendent = new TestAttendant();
     ParkingLot parkingLot = new ParkingLot(1, attendent);
     Car car1 = new Car();
     parkingLot.park(car1);
@@ -51,7 +51,7 @@ class ParkingLotTest {
 
 }
 
-class TestAttend extends Attendent{
+class TestAttendant extends Attendant {
   boolean isNotifiedForParkingLotFull = false;
   boolean isNotifiedForFreeParkingLot = false;
   @Override

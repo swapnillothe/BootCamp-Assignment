@@ -5,13 +5,13 @@ import java.util.List;
 
 class ParkingLot {
   private int size;
-  private ParkingLotObserver attendent;
+  private ParkingLotObserver attendant;
   private List<Car> parkedCars;
 
-  ParkingLot(int size, ParkingLotObserver attendent) {
+  ParkingLot(int size, ParkingLotObserver attendant) {
     this.size = size;
-    this.attendent = attendent;
-    attendent.addParkingLot(this);
+    this.attendant = attendant;
+    attendant.addParkingLot(this);
     parkedCars = new ArrayList<>();
   }
 
@@ -21,13 +21,13 @@ class ParkingLot {
     }
     parkedCars.add(car);
     if(parkedCars.size() == size){
-      this.attendent.notifyObserverWithFull(this);
+      this.attendant.notifyObserverWithFull(this);
     }
   }
 
   boolean unPark(Car car) {
     if(parkedCars.size()==size){
-      this.attendent.notifyObserverWithFreeSpace(this);
+      this.attendant.notifyObserverWithFreeSpace(this);
     }
     return parkedCars.remove(car);
   }

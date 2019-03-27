@@ -4,10 +4,10 @@ package parking_lot;
 import java.util.HashMap;
 import java.util.Map;
 
-class Attendent implements ParkingLotObserver{
+class Attendant implements ParkingLotObserver{
   private Map<ParkingLot, Boolean> parkingLots;
 
-  Attendent() {
+  Attendant() {
     this.parkingLots = new HashMap<>();
   }
 

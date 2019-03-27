@@ -4,26 +4,26 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AttendentTest {
+class AttendantTest {
   @Test
   void shouldNotifiedByParkingLotIfParkingLotIsFull() throws ParkingLotFullException {
     Car car = new Car();
 
-    Attendent attendent = new Attendent();
-    ParkingLot parkingLot = new ParkingLot(1, attendent);
+    Attendant attendant = new Attendant();
+    ParkingLot parkingLot = new ParkingLot(1, attendant);
     parkingLot.park(car);
 
-    assertTrue(attendent.isParkingLotFull(parkingLot));
+    assertTrue(attendant.isParkingLotFull(parkingLot));
   }
 
   @Test
   void shouldNotNotifiedByParkingLotIfParkingLotIsNotFull() throws ParkingLotFullException {
     Car car = new Car();
 
-    Attendent attendent = new Attendent();
-    ParkingLot parkingLot = new ParkingLot(2, attendent);
+    Attendant attendant = new Attendant();
+    ParkingLot parkingLot = new ParkingLot(2, attendant);
     parkingLot.park(car);
 
-    assertFalse(attendent.isParkingLotFull(parkingLot));
+    assertFalse(attendant.isParkingLotFull(parkingLot));
   }
 }
