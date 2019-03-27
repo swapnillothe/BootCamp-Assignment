@@ -16,8 +16,13 @@ class Attendent implements ParkingLotObserver{
   }
 
   @Override
-  public void notifyObserver(ParkingLot parkingLot) {
+  public void notifyObserverWithFull(ParkingLot parkingLot) {
     parkingLots.put(parkingLot,Boolean.TRUE);
+  }
+
+  @Override
+  public void notifyObserverWithFreeSpace(ParkingLot parkingLot) {
+    parkingLots.put(parkingLot,Boolean.FALSE);
   }
 
   @Override

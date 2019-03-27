@@ -15,14 +15,20 @@ class ParkingLot {
     parkedCars = new ArrayList<>();
   }
 
-  int park(Car car) throws ParkingLotFullException {
+  void park(Car car) throws ParkingLotFullException {
     if (parkedCars.size() == size){
       throw new ParkingLotFullException();
     }
     parkedCars.add(car);
     if(parkedCars.size() == size){
-      this.attendent.notifyObserver(this);
+      this.attendent.notifyObserverWithFull(this);
     }
-    return parkedCars.size();
+  }
+
+  boolean unPark(Car car) {
+    if(parkedCars.size()==size){
+      this.attendent.notifyObserverWithFreeSpace(this);
+    }
+    return parkedCars.remove(car);
   }
 }
