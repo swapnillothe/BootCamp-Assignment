@@ -16,17 +16,21 @@ class ParkingLot {
   }
 
   void park(Car car) throws ParkingLotFullException {
-    if (parkedCars.size() == size){
+    if (isParkingLotFull()){
       throw new ParkingLotFullException();
     }
     parkedCars.add(car);
-    if(parkedCars.size() == size){
+    if(isParkingLotFull()){
       this.attendant.notifyObserverWithFull(this);
     }
   }
 
+  private boolean isParkingLotFull() {
+    return parkedCars.size() == size;
+  }
+
   boolean unPark(Car car) {
-    if(parkedCars.size()==size){
+    if(isParkingLotFull()){
       this.attendant.notifyObserverWithFreeSpace(this);
     }
     return parkedCars.remove(car);
